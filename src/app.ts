@@ -3,6 +3,7 @@ const td = document.querySelector('td')!
 
 
 let row = 1
+let count = 1
 
 
 button!.addEventListener('click', (e) => {
@@ -17,11 +18,8 @@ button!.addEventListener('click', (e) => {
   let gender = document.getElementById('gender') as HTMLOptionElement
   let notes = document.getElementById('notes') as HTMLInputElement
 
- // alert user if they forgot to input
-  if(!firstName.value || !lastName.value || !address.value){
-    alert('Required field is empty')
-    gender.value = ''
-  }
+
+  
 
 let table = document.getElementById('display') as HTMLTableElement
 
@@ -44,28 +42,36 @@ const cellFour: any = newRow.insertCell(3)
 const cellFive: any = newRow.insertCell(4)
 const cellSix: any = newRow.insertCell(5)
 const cellSeven: any = newRow.insertCell(6)
+const cellEight: any = newRow.insertCell(7)
 
 
 
 
-//put the input values  in the table
-cellOne.innerHTML = firstName.value
-cellTwo.innerHTML = lastName.value 
-cellThree.innerHTML = address.value
-cellFour.innerHTML = birthday.value
-cellFive.innerHTML = gender.value
-cellSix.innerHTML = notes.value && cellSeven.append(deletebtn)
 
+// conditional rendering the output
 
+if(!firstName.value || !lastName.value || !address.value){
+  alert('Required field is empty')
+  gender.value = ''
+  cellOne.value = ''
+} else {
+  cellOne.innerHTML = count
+  cellTwo.innerHTML = firstName.value 
+  cellThree.innerHTML = lastName.value
+  cellFour.innerHTML = address.value
+  cellFive.innerHTML = birthday.value
+  cellSix.innerHTML = gender.value
+  cellSeven.innerHTML = notes.value && cellEight.append(deletebtn)
+  count++
+}
 
 deletebtn.addEventListener('click', (e) => {
   e.preventDefault()
   //clear table
 })
 
-
-
 row++
+
 // reset input fields after submitting
 firstName.value = ''
 lastName.value = ''

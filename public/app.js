@@ -2,6 +2,7 @@
 const button = document.getElementById('add-data');
 const td = document.querySelector('td');
 let row = 1;
+let count = 1;
 button.addEventListener('click', (e) => {
     // prevent reloads when submitting
     e.preventDefault();
@@ -12,11 +13,6 @@ button.addEventListener('click', (e) => {
     let birthday = document.getElementById('date');
     let gender = document.getElementById('gender');
     let notes = document.getElementById('notes');
-    // alert user if they forgot to input
-    if (!firstName.value || !lastName.value || !address.value) {
-        alert('Required field is empty');
-        gender.value = '';
-    }
     let table = document.getElementById('display');
     const buttonHolder = document.createElement('div');
     buttonHolder.setAttribute('class', '.newButtonHolder');
@@ -33,13 +29,23 @@ button.addEventListener('click', (e) => {
     const cellFive = newRow.insertCell(4);
     const cellSix = newRow.insertCell(5);
     const cellSeven = newRow.insertCell(6);
-    //put the input values  in the table
-    cellOne.innerHTML = firstName.value;
-    cellTwo.innerHTML = lastName.value;
-    cellThree.innerHTML = address.value;
-    cellFour.innerHTML = birthday.value;
-    cellFive.innerHTML = gender.value;
-    cellSix.innerHTML = notes.value && cellSeven.append(deletebtn);
+    const cellEight = newRow.insertCell(7);
+    // conditional rendering the output
+    if (!firstName.value || !lastName.value || !address.value) {
+        alert('Required field is empty');
+        gender.value = '';
+        cellOne.value = '';
+    }
+    else {
+        cellOne.innerHTML = count;
+        cellTwo.innerHTML = firstName.value;
+        cellThree.innerHTML = lastName.value;
+        cellFour.innerHTML = address.value;
+        cellFive.innerHTML = birthday.value;
+        cellSix.innerHTML = gender.value;
+        cellSeven.innerHTML = notes.value && cellEight.append(deletebtn);
+        count++;
+    }
     deletebtn.addEventListener('click', (e) => {
         e.preventDefault();
         //clear table
