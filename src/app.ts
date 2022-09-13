@@ -30,6 +30,14 @@ deletebtn.textContent = 'X'
 deletebtn.style.backgroundColor = 'red'
 deletebtn.style.color = 'white'
 
+// create more... button for notes content
+const notesHolder = document.createElement('div')
+notesHolder.setAttribute('class', '.newButtonHolder')
+
+const moreBtn = document.createElement('button')
+moreBtn.textContent = 'Open Notes...'
+moreBtn.setAttribute("class", "btn btn-secondary btn-sm")
+
 
 
 let newRow = table.insertRow(row) 
@@ -56,9 +64,19 @@ if(!firstName.value || !lastName.value || !address.value){
   cellFour.innerHTML = address.value
   cellFive.innerHTML = birthday.value
   cellSix.innerHTML = gender.value
-  cellSeven.innerHTML = notes.value && cellEight.append(deletebtn)
+  cellSeven.append(moreBtn)
+  cellEight.append(deletebtn)
   count++
 }
+
+
+
+
+// display notes after clicking Open Notes button
+moreBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+
+})
 
 
 //give functionality to delete button
