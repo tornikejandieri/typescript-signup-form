@@ -2,6 +2,7 @@
 // grab elements
 const button = document.getElementById('add-data');
 const td = document.querySelector('td');
+const localStorageKey = 'inputData';
 let firstName = document.getElementById('firstname');
 let lastName = document.getElementById('lastname');
 let address = document.getElementById('address');
@@ -45,12 +46,20 @@ button.addEventListener('click', (e) => {
         cellOne.value = '';
     }
     else {
+        //put stuff in local storage
+        localStorage.setItem('firstname', firstName.value);
+        localStorage.setItem('lastname', lastName.value);
+        localStorage.setItem('address', address.value);
+        localStorage.setItem('birthday', birthday.value);
+        localStorage.setItem('gender', gender.value);
+        localStorage.setItem('notes', notes.value);
+        //display on table
         cellOne.innerHTML = count;
-        cellTwo.innerHTML = firstName.value;
-        cellThree.innerHTML = lastName.value;
-        cellFour.innerHTML = address.value;
-        cellFive.innerHTML = birthday.value;
-        cellSix.innerHTML = gender.value;
+        cellTwo.innerHTML = localStorage.getItem('firstname');
+        cellThree.innerHTML = localStorage.getItem('lastname');
+        cellFour.innerHTML = localStorage.getItem('address');
+        cellFive.innerHTML = localStorage.getItem('birthday');
+        cellSix.innerHTML = localStorage.getItem('gender');
         cellSeven.append(moreBtn);
         cellEight.append(deletebtn);
         a = notes.value;
