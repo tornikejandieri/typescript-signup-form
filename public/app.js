@@ -1,19 +1,19 @@
 "use strict";
+// grab elements
 const button = document.getElementById('add-data');
 const td = document.querySelector('td');
+let firstName = document.getElementById('firstname');
+let lastName = document.getElementById('lastname');
+let address = document.getElementById('address');
+let birthday = document.getElementById('date');
+let gender = document.getElementById('gender');
+let notes = document.getElementById('notes');
+let table = document.getElementById('display');
 let row = 1;
 let count = 1;
 button.addEventListener('click', (e) => {
     // prevent reloads when submitting
     e.preventDefault();
-    // grab elements
-    let firstName = document.getElementById('firstname');
-    let lastName = document.getElementById('lastname');
-    let address = document.getElementById('address');
-    let birthday = document.getElementById('date');
-    let gender = document.getElementById('gender');
-    let notes = document.getElementById('notes');
-    let table = document.getElementById('display');
     // create delete button and its holder div
     const buttonHolder = document.createElement('div');
     buttonHolder.setAttribute('class', '.newButtonHolder');
@@ -37,6 +37,7 @@ button.addEventListener('click', (e) => {
     const cellSix = newRow.insertCell(5);
     const cellSeven = newRow.insertCell(6);
     const cellEight = newRow.insertCell(7);
+    let a;
     // conditional rendering the output
     if (!firstName.value || !lastName.value || !address.value) {
         alert('Required field is empty');
@@ -52,11 +53,13 @@ button.addEventListener('click', (e) => {
         cellSix.innerHTML = gender.value;
         cellSeven.append(moreBtn);
         cellEight.append(deletebtn);
+        a = notes.value;
         count++;
     }
     // display notes after clicking Open Notes button
     moreBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        alert(a);
     });
     //give functionality to delete button
     deletebtn.addEventListener('click', (e) => {

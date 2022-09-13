@@ -1,5 +1,15 @@
+ // grab elements
 const button = document.getElementById('add-data')
 const td = document.querySelector('td')!
+
+
+let firstName = document.getElementById('firstname') as HTMLInputElement
+let lastName = document.getElementById('lastname') as HTMLInputElement
+let address = document.getElementById('address') as HTMLInputElement
+let birthday = document.getElementById('date') as HTMLInputElement
+let gender = document.getElementById('gender') as HTMLOptionElement
+let notes = document.getElementById('notes') as HTMLInputElement
+let table = document.getElementById('display') as HTMLTableElement
 
 
 let row = 1
@@ -9,16 +19,6 @@ let count = 1
 button!.addEventListener('click', (e) => {
  // prevent reloads when submitting
   e.preventDefault()
-
- // grab elements
-  let firstName = document.getElementById('firstname') as HTMLInputElement
-  let lastName = document.getElementById('lastname') as HTMLInputElement
-  let address = document.getElementById('address') as HTMLInputElement
-  let birthday = document.getElementById('date') as HTMLInputElement
-  let gender = document.getElementById('gender') as HTMLOptionElement
-  let notes = document.getElementById('notes') as HTMLInputElement
-
-let table = document.getElementById('display') as HTMLTableElement
 
 
 // create delete button and its holder div
@@ -50,6 +50,7 @@ const cellFive: any = newRow.insertCell(4)
 const cellSix: any = newRow.insertCell(5)
 const cellSeven: any = newRow.insertCell(6)
 const cellEight: any = newRow.insertCell(7)
+let a: any
 
 // conditional rendering the output
 
@@ -64,18 +65,18 @@ if(!firstName.value || !lastName.value || !address.value){
   cellFour.innerHTML = address.value
   cellFive.innerHTML = birthday.value
   cellSix.innerHTML = gender.value
+  
   cellSeven.append(moreBtn)
   cellEight.append(deletebtn)
+  a = notes.value
   count++
 }
-
-
 
 
 // display notes after clicking Open Notes button
 moreBtn.addEventListener('click', (e) => {
   e.preventDefault()
-
+  alert(a)
 })
 
 
