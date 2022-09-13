@@ -18,11 +18,10 @@ button!.addEventListener('click', (e) => {
   let gender = document.getElementById('gender') as HTMLOptionElement
   let notes = document.getElementById('notes') as HTMLInputElement
 
-
-  
-
 let table = document.getElementById('display') as HTMLTableElement
 
+
+// create delete button and its holder div
 const buttonHolder = document.createElement('div')
 buttonHolder.setAttribute('class', '.newButtonHolder')
 
@@ -44,10 +43,6 @@ const cellSix: any = newRow.insertCell(5)
 const cellSeven: any = newRow.insertCell(6)
 const cellEight: any = newRow.insertCell(7)
 
-
-
-
-
 // conditional rendering the output
 
 if(!firstName.value || !lastName.value || !address.value){
@@ -65,10 +60,21 @@ if(!firstName.value || !lastName.value || !address.value){
   count++
 }
 
+
+//give functionality to delete button
 deletebtn.addEventListener('click', (e) => {
   e.preventDefault()
-  //clear table
+  cellOne.remove()
+  cellTwo.remove()
+  cellThree.remove()
+  cellFour.remove()
+  cellFive.remove()
+  cellSix.remove()
+  cellSeven.remove()
+  cellEight.remove()
+  count --
 })
+
 
 row++
 

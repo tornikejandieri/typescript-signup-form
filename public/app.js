@@ -14,6 +14,7 @@ button.addEventListener('click', (e) => {
     let gender = document.getElementById('gender');
     let notes = document.getElementById('notes');
     let table = document.getElementById('display');
+    // create delete button and its holder div
     const buttonHolder = document.createElement('div');
     buttonHolder.setAttribute('class', '.newButtonHolder');
     const deletebtn = document.createElement('button');
@@ -46,9 +47,18 @@ button.addEventListener('click', (e) => {
         cellSeven.innerHTML = notes.value && cellEight.append(deletebtn);
         count++;
     }
+    //give functionality to delete button
     deletebtn.addEventListener('click', (e) => {
         e.preventDefault();
-        //clear table
+        cellOne.remove();
+        cellTwo.remove();
+        cellThree.remove();
+        cellFour.remove();
+        cellFive.remove();
+        cellSix.remove();
+        cellSeven.remove();
+        cellEight.remove();
+        count--;
     });
     row++;
     // reset input fields after submitting
